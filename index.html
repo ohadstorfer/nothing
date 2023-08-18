@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    book name: <input id="bookName"></input>
+    aouthor: <input id="aouthor"></input> <br>
+
+    <button onclick="next()">next </button>
+    <button onclick="prev()">prev </button>
+    <button onclick="fist()">first </button>
+    <button onclick="last()">last </button>
+    <button onclick="add()">add </button>
+    <button onclick="save()">save </button>
+
+    
+
+
+    <script>
+        console.log(0%4);
+        console.log(1%4);
+        console.log(2%4);
+        console.log(3%4);
+        console.log(4%4);
+        console.log(5%4);
+        console.log(6%4);
+        
+
+
+
+        let index= 0
+        let books= [
+            {"bookName":"harry", "aouthor" : "JKroling"},
+            {"bookName":"run", "aouthor" : "eyal"},
+            {"bookName":"sleep", "aouthor" : "ohad"},
+            {"bookName":"party", "aouthor" : "chemo"}
+
+        ]
+
+        function updateDiv(){
+         bookName.value= books[index].bookName
+         aouthor.value= books[index].aouthor
+
+        }
+
+       
+
+        function save(){
+            if( localStorage.getItem("books" )!=null){
+                books=(JSON.parse( localStorage.getItem("books" )))
+            }
+            localStorage.setItem("books",JSON.stringify(books) )
+          
+
+        }
+        function load(){
+           
+
+        }
+
+        function next(){
+            index++
+            updateDiv()
+            
+        }
+        function prev(){
+            index--
+            updateDiv()
+        }
+        function fist(){
+            index=0
+            updateDiv()
+        }
+        function last(){
+            index=books.length-1
+            updateDiv()
+        }
+
+        function add(){
+           books.push({"book": bookName.value, "aouthor": aouthor.value})
+        }
+        
+
+       
+    
+
+
+
+    </script>
+
+
+
+
+</body>
+
+</html>
